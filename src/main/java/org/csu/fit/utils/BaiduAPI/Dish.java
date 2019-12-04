@@ -1,5 +1,8 @@
 package org.csu.fit.utils.BaiduAPI;
 
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
+
 import java.net.URLEncoder;
 
 /**
@@ -16,17 +19,17 @@ public class Dish {
      * https://ai.baidu.com/file/470B3ACCA3FE43788B5A963BF0B625F3
      * 下载
      */
-    public static String dish() {
+    public static String dish(String filePath) {
         // 请求url
         String url = "https://aip.baidubce.com/rest/2.0/image-classify/v2/dish";
         try {
             // 本地文件路径
-            String filePath = "/Users/lvwuqian/Desktop/hongshaorou.jpeg";
+            //String filePath = "/Users/lvwuqian/Desktop/hongshaorou.jpeg";
             byte[] imgData = FileUtil.readFileByBytes(filePath);
             String imgStr = Base64Util.encode(imgData);
             String imgParam = URLEncoder.encode(imgStr, "UTF-8");
 
-            String param = "image=" + imgParam + "&top_num=" + 5;
+            String param = "image=" + imgParam + "&top_num=" + 5 +"&baike_num=" + 5;
 
             // 注意这里仅为了简化编码每一次请求都去获取access_token，线上环境access_token有过期时间， 客户端可自行缓存，过期后重新获取。
             String accessToken = AuthService.getAuth();
@@ -39,5 +42,13 @@ public class Dish {
         }
         return null;
     }
+
+//    public static void main(String[] args) {
+//        String dishString = dish("/Users/lvwuqian/Desktop/hongshaorou.jpeg");
+//        JSONObject dishJson = JSONObject.parseObject(dishString);
+//        JSONArray dishArray = (JSONArray) dishJson.get("result");
+//
+//        System.out.println("****************" + dishArray);
+//    }
 
 }
