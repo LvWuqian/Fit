@@ -22,5 +22,6 @@ public class Configuration {
 
     public static final String SCOPE = "audio_voice_assistant_get";
 
-
+    /* 新闻API */
+    public static final String NEWS_API_KEY = "OdxtIeLqwz1ICIu2UbckFn44Ie0WsfdHR0iu5Bebj2WqACd8W9EPfOsZPS9T6Ep4";
 }
