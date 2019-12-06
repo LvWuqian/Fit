@@ -17,7 +17,7 @@ public class DishController {
 
     @GetMapping("/dish")
     public JSONArray getDishes(){
-        return dishService.getDishesByFilePath("/Users/lvwuqian/Desktop/hongshaorou.jpeg");
+        return dishService.getDishesByFilePath("https://fitfood.oss-cn-hangzhou.aliyuncs.com/foodimages/201112131158155.jpg");
     }
 
 }

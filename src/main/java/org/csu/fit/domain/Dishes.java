@@ -11,6 +11,15 @@ public class Dishes implements Serializable {
     private String description;
     private String baike_url;
     private String image_url;
+    private String targetImage_url;
+
+    public String getTargetImage_url() {
+        return targetImage_url;
+    }
+
+    public void setTargetImage_url(String targetImage_url) {
+        this.targetImage_url = targetImage_url;
+    }
 
     public int getId() {
         return id;
