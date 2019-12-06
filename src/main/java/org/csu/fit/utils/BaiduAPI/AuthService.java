@@ -30,6 +30,14 @@ public class AuthService {
         return getAuth(clientId, clientSecret);
     }
 
+    public static String getBodyAuth() {
+        // 官网获取的 API Key 更新为你注册的
+        String clientId = "8fR0OwarSg4qHT95iyus1rFv";
+        // 官网获取的 Secret Key 更新为你注册的
+        String clientSecret = "H3EdUAgZs1p4uZQifU90Nmk4rGjWsMbU";
+        return getAuth(clientId, clientSecret);
+    }
+
     /**
      * 获取API访问token
      * 该token有一定的有效期，需要自行管理，当失效时需重新获取.
