@@ -1,8 +1,6 @@
 package org.csu.fit.utils.BaiduAPI;
 
 import java.net.URLEncoder;
-import com.alibaba.fastjson.JSONArray;
-import com.alibaba.fastjson.JSONObject;
 
 /**
  * 人体关键点识别
@@ -24,7 +22,7 @@ public class BodyAnalysis {
         try {
             // 本地文件路径
             //String filePath = "/Users/lvwuqian/Desktop/zhoujielun.jpg";
-            byte[] imgData = BodyFileUtil.readFileByBytes(filePath);
+            byte[] imgData = FileUtil.readFileByBytes(filePath);
             String imgStr = Base64Util.encode(imgData);
             String imgParam = URLEncoder.encode(imgStr, "UTF-8");
 
