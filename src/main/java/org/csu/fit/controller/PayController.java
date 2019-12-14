@@ -42,6 +42,7 @@ public class PayController {
         } catch (AlipayApiException e) {
             e.printStackTrace();
         }
+        httpResponse.setHeader("Access-Control-Allow-Origin","*");
         httpResponse.setContentType("text/html;charset=" + appPayConfig.getCHARSET());
         httpResponse.getWriter().write(form);//直接将完整的表单html输出到页面
         httpResponse.getWriter().flush();
