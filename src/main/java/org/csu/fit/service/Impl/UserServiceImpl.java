@@ -71,24 +71,34 @@ public class UserServiceImpl implements UserService {
         List<String> lunchs = (ArrayList<String>)dailyFood.get("lunch");
         List<String> dinners = (ArrayList<String>)dailyFood.get("dinner");
         List<String> otherss = (ArrayList<String>)dailyFood.get("others");
+
+        int[] cal = {50, 40 , 120, 80, 60, 150, 160};
         String breakfast = "";
+        int breakfastCa = 0;
         for(int i = 0; i < breakfasts.size(); i++){
             breakfast += breakfasts.get(i) + ",";
+            breakfastCa += cal[(int)(Math.random() * 5)];
         }
         breakfast = breakfast.substring(0, breakfast.length()-1);
         String lunch = "";
+        int lunchCa = 0;
         for(int i = 0; i < lunchs.size(); i++){
             lunch += lunchs.get(i) + ",";
+            lunchCa += cal[(int)(Math.random() * 5)];
         }
         lunch = lunch.substring(0, lunch.length()-1);
         String dinner = "";
+        int dinnerCa = 0;
         for(int i = 0; i < dinners.size(); i++){
             dinner += dinners.get(i) + ",";
+            dinnerCa += cal[(int)(Math.random() * 5)];
         }
         dinner = dinner.substring(0, dinner.length()-1);
         String others = "";
+        int othersCa = 0;
         for(int i = 0; i < otherss.size(); i++){
             others += otherss.get(i) + ",";
+            othersCa += cal[(int)(Math.random() * 5)];
         }
         others = others.substring(0, others.length()-1);
 
@@ -98,10 +108,10 @@ public class UserServiceImpl implements UserService {
         dailyFoodForDAO.setLunch(lunch);
         dailyFoodForDAO.setDinner(dinner);
         dailyFoodForDAO.setOthers(others);
-        dailyFoodForDAO.setBreakfastCa(12);
-        dailyFoodForDAO.setLunchCa(32);
-        dailyFoodForDAO.setDinnerCa(41);
-        dailyFoodForDAO.setOthersCa(55);
+        dailyFoodForDAO.setBreakfastCa(breakfastCa);
+        dailyFoodForDAO.setLunchCa(lunchCa);
+        dailyFoodForDAO.setDinnerCa(dinnerCa);
+        dailyFoodForDAO.setOthersCa(othersCa);
         userMapper.insertDailyFood(dailyFoodForDAO);
 
     }
