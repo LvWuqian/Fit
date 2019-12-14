@@ -19,4 +19,9 @@ public class RecipeController {
     public JSONObject getRecipe(@PathVariable("classId") String classId){
         return recipeService.getRecipeByClassId(classId);
     }
+
+    @GetMapping("/recipedetail/{id}")
+    public JSONObject getRecipeDetail(@PathVariable("id") String id){
+        return recipeService.getRecipeById(id);
+    }
 }
