@@ -1,10 +1,12 @@
 package org.csu.fit.controller;
 
 import com.zhenzi.sms.ZhenziSmsClient;
+import org.csu.fit.domain.DailyFood;
 import org.csu.fit.domain.User;
 import org.csu.fit.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;

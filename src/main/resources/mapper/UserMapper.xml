@@ -15,4 +15,33 @@
           AND password = #{password}
     </select>
 
+    <select id="getDailyFoodForDAOByDate" parameterType="java.lang.String" resultType="org.csu.fit.domain.DailyFoodForDAO">
+        SELECT
+              date,
+              breakfast,
+              lunch,
+              dinner,
+              others,
+              breakfastCa,
+              lunchCa,
+              dinnerCa,
+              othersCa
+        FROM dailyfood
+        WHERE date = #{date}
+    </select>
+
+    <select id="getAllDailyFood" resultType="org.csu.fit.domain.DailyFoodForDAO">
+        SELECT
+              date,
+              breakfast,
+              lunch,
+              dinner,
+              others,
+              breakfastCa,
+              lunchCa,
+              dinnerCa,
+              othersCa
+        FROM dailyfood
+    </select>
+
 </mapper>
