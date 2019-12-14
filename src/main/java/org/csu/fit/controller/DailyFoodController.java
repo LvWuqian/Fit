@@ -1,8 +1,8 @@
 package org.csu.fit.controller;
 
+import com.alibaba.fastjson.JSONObject;
 import org.csu.fit.domain.DailyFood;
 import org.csu.fit.domain.DailyFoodForChart;
-import org.csu.fit.domain.DailyFoodForDAO;
 import org.csu.fit.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -24,5 +24,10 @@ public class DailyFoodController {
     @GetMapping("/alldailyfood")
     public List<DailyFoodForChart> getAllDailyFood(){
         return userService.getAllDailyFood();
+    }
+
+    @PostMapping("/adddailyfood")
+    public void insertDailyFood(@RequestBody JSONObject dailyfood){
+        userService.insertDailyFood(dailyfood);
     }
 }

@@ -44,4 +44,17 @@
         FROM dailyfood
     </select>
 
+    <insert id="insertDailyFood" parameterType="org.csu.fit.domain.DailyFoodForDAO">
+        INSERT INTO dailyfood VALUES
+              (#{date},
+              #{breakfast},
+              #{lunch},
+              #{dinner},
+              #{others},
+              #{breakfastCa},
+              #{lunchCa},
+              #{dinnerCa},
+              #{othersCa})
+    </insert>
+
 </mapper>

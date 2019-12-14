@@ -10,4 +10,5 @@ public interface UserMapper {
     User getUserByUsernameAndPassword(String username, String password);
     DailyFoodForDAO getDailyFoodForDAOByDate(String date);
     List<DailyFoodForDAO> getAllDailyFood();
+    void insertDailyFood(DailyFoodForDAO dailyFoodForDAO);
 }

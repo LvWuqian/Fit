@@ -1,5 +1,7 @@
 package org.csu.fit.service.Impl;
 
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import org.csu.fit.domain.DailyFood;
 import org.csu.fit.domain.DailyFoodForChart;
 import org.csu.fit.domain.DailyFoodForDAO;
@@ -61,5 +63,46 @@ public class UserServiceImpl implements UserService {
             dailyFoodForCharts.add(dailyFoodForChart);
         });
         return dailyFoodForCharts;
+    }
+
+    @Override
+    public void insertDailyFood(JSONObject dailyFood) {
+        List<String> breakfasts = (ArrayList<String>)dailyFood.get("breakfast");
+        List<String> lunchs = (ArrayList<String>)dailyFood.get("lunch");
+        List<String> dinners = (ArrayList<String>)dailyFood.get("dinner");
+        List<String> otherss = (ArrayList<String>)dailyFood.get("others");
+        String breakfast = "";
+        for(int i = 0; i < breakfasts.size(); i++){
+            breakfast += breakfasts.get(i) + ",";
+        }
+        breakfast = breakfast.substring(0, breakfast.length()-1);
+        String lunch = "";
+        for(int i = 0; i < lunchs.size(); i++){
+            lunch += lunchs.get(i) + ",";
+        }
+        lunch = lunch.substring(0, lunch.length()-1);
+        String dinner = "";
+        for(int i = 0; i < dinners.size(); i++){
+            dinner += dinners.get(i) + ",";
+        }
+        dinner = dinner.substring(0, dinner.length()-1);
+        String others = "";
+        for(int i = 0; i < otherss.size(); i++){
+            others += otherss.get(i) + ",";
+        }
+        others = others.substring(0, others.length()-1);
+
+        DailyFoodForDAO dailyFoodForDAO = new DailyFoodForDAO();
+        dailyFoodForDAO.setDate(dailyFood.getString("date"));
+        dailyFoodForDAO.setBreakfast(breakfast);
+        dailyFoodForDAO.setLunch(lunch);
+        dailyFoodForDAO.setDinner(dinner);
+        dailyFoodForDAO.setOthers(others);
+        dailyFoodForDAO.setBreakfastCa(12);
+        dailyFoodForDAO.setLunchCa(32);
+        dailyFoodForDAO.setDinnerCa(41);
+        dailyFoodForDAO.setOthersCa(55);
+        userMapper.insertDailyFood(dailyFoodForDAO);
+
     }
 }
