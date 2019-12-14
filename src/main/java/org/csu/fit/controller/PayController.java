@@ -22,7 +22,7 @@ public class PayController {
         AppPayConfig appPayConfig = new AppPayConfig();
         AlipayClient alipayClient = new DefaultAlipayClient(appPayConfig.getURL(),appPayConfig.getAPPID(), appPayConfig.getAPP_PRIVATE_KEY(), appPayConfig.getFORMAT(), appPayConfig.getCHARSET(), appPayConfig.getALIPAY_PUBLIC_KEY(), appPayConfig.getSIGN_TYPE()); //获得初始化的AlipayClient
         AlipayTradePagePayRequest alipayRequest = new AlipayTradePagePayRequest();//创建API对应的request
-        alipayRequest.setReturnUrl("http://localhost:8011/");
+        alipayRequest.setReturnUrl("pay-status.html");
         alipayRequest.setNotifyUrl("http://domain.com/CallBack/notify_url.jsp");//在公共参数中设置回跳和通知地址
         int num = (int)(Math.random()*10000+5);
         alipayRequest.setBizContent("{" +
