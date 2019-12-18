@@ -1,7 +1,8 @@
 package org.csu.fit.config;
 
 public class Configuration {
-
+    /* 应用的ID */
+    public static final String APPID = "17899733";
     /* 录音使用到的参数 */
     public static final boolean METHOD_RAW = false; // 默认以json方式上传音频文件
     //  填写网页上申请的appkey

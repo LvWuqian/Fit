@@ -1,11 +1,12 @@
 package org.csu.fit.service.Impl;
 
+import com.baidu.aip.speech.AipSpeech;
 import org.csu.fit.service.ILanguageService;
-import org.csu.fit.utils.RecordAPI.json.JSONObject;
 import org.csu.fit.utils.RecordAPI.util.Base64Util;
 import org.csu.fit.utils.RecordAPI.util.ConnUtil;
 import org.csu.fit.utils.RecordAPI.util.DemoException;
 import org.csu.fit.utils.RecordAPI.util.TokenHolder;
+import org.json.JSONObject;
 import org.springframework.stereotype.Service;
 
 import java.io.File;
@@ -21,16 +22,16 @@ public class LanguageServiceImpl implements ILanguageService {
 
     @Override
     public String analyse() throws IOException, DemoException {
-        TokenHolder holder = new TokenHolder(APP_KEY, SECRET_KEY, SCOPE);
-        holder.resfresh();
-        String token = holder.getToken();
-        String result = null;
-        if (METHOD_RAW) {
-            result = runRawPostMethod(token);
-        } else {
-            result = runJsonPostMethod(token);
-        }
-        return result;
+        // 初始化一个AipSpeech
+        AipSpeech client = new AipSpeech(APPID, APP_KEY, SECRET_KEY);
+        // 可选：设置网络连接参数
+        client.setConnectionTimeoutInMillis(2000);
+        client.setSocketTimeoutInMillis(60000);
+
+        // 调用接口
+        JSONObject res = client.asr(FILENAME, "wav", 16000, null);
+        System.out.println("识别结果: " + res.toString(2));
+        return res.toString(2);
     }
 
     @Override
