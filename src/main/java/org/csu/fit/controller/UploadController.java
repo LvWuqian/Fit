@@ -67,16 +67,18 @@ public class UploadController {
 
         List<Dishes> ansList = new ArrayList<>();
         for(int i = 0; i < resList.size(); i ++){
-            Dishes dishes = new Dishes();
-            dishes.setTargetImage_url(uploadUrl);
-            dishes.setName(resList.getJSONObject(i).getString("name"));
-            dishes.setImage_url(resList.getJSONObject(i).getJSONObject("baike_info").getString("image_url"));
-            dishes.setBaike_url(resList.getJSONObject(i).getJSONObject("baike_info").getString("baike_url"));
-            dishes.setCalorie(resList.getJSONObject(i).getFloat("calorie"));
-            dishes.setDescription(resList.getJSONObject(i).getJSONObject("baike_info").getString("description"));
-            dishes.setProbability(resList.getJSONObject(i).getFloat("probability"));
+            if(resList.getJSONObject(i).getBoolean("has_calorie")) {
+                Dishes dishes = new Dishes();
+                dishes.setTargetImage_url(uploadUrl);
+                dishes.setName(resList.getJSONObject(i).getString("name"));
+                dishes.setImage_url(resList.getJSONObject(i).getJSONObject("baike_info").getString("image_url"));
+                dishes.setBaike_url(resList.getJSONObject(i).getJSONObject("baike_info").getString("baike_url"));
+                dishes.setCalorie(resList.getJSONObject(i).getFloat("calorie"));
+                dishes.setDescription(resList.getJSONObject(i).getJSONObject("baike_info").getString("description"));
+                dishes.setProbability(resList.getJSONObject(i).getFloat("probability"));
 
-            ansList.add(dishes);
+                ansList.add(dishes);
+            }
         }
         return ansList;
     }
