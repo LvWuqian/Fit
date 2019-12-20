@@ -67,7 +67,7 @@ public class UploadController {
 
         List<Dishes> ansList = new ArrayList<>();
         for(int i = 0; i < resList.size(); i ++){
-            if(resList.getJSONObject(i).getBoolean("has_calorie")) {
+            if(resList.getJSONObject(i).getBoolean("has_calorie") && resList.getJSONObject(i).containsKey("baike_info")) {
                 Dishes dishes = new Dishes();
                 dishes.setTargetImage_url(uploadUrl);
                 dishes.setName(resList.getJSONObject(i).getString("name"));
